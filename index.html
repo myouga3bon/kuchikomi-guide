@@ -44,6 +44,7 @@
 }
 * { box-sizing: border-box; }
 body {
+  margin: 0;
   background: var(--bg); color: var(--ink);
   font-family: var(--font-body); font-size: 17px; line-height: 1.8;
   padding-inline: 16px; padding-block: 0 48px;
@@ -53,6 +54,25 @@ body {
 h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; line-height: 1.4; margin: 0; }
 p { margin: 0; }
 a { color: var(--accent); }
+
+/* brand logo (school sign, fixed colors per the school's logo spec) */
+.brand { display: flex; justify-content: center; padding-block: 18px 14px; }
+.logo-sign {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: #fff1dc; border: 2px solid #ffc773; border-radius: 16px; padding: 8px 14px;
+}
+.logo-tiles { display: inline-flex; gap: 3px; }
+.logo-tiles span {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 1.7em; height: 1.7em; font-size: 24px; font-weight: 900; color: #231815; line-height: 1;
+  font-family: "Zen Maru Gothic", "Hiragino Sans", "Yu Gothic", sans-serif;
+}
+.logo-tiles .t1 { background: #bbdcf4; }
+.logo-tiles .t2 { background: #f9c159; }
+.logo-tiles .t3 { background: #c4d710; }
+.logo-tiles .t4 { background: #f4abaf; }
+.logo-name { font-size: 29px; font-weight: 900; color: #1daacf; letter-spacing: .04em; white-space: nowrap; font-family: "Zen Maru Gothic", "Hiragino Sans", "Yu Gothic", sans-serif; }
+@media (min-width: 560px) { .logo-tiles span { font-size: 30px; } .logo-name { font-size: 36px; } }
 
 /* nav */
 .nav {
@@ -210,7 +230,7 @@ details { background: var(--surface); border: 1px solid var(--line); border-radi
 summary { cursor: pointer; padding: 14px 0; font-family: var(--font-display); font-weight: 700; font-size: 16.5px; line-height: 1.5; }
 details p { padding-bottom: 14px; font-size: 16px; line-height: 1.8; color: var(--muted); }
 
-footer .school { margin-top: 12px; font-family: var(--font-display); font-weight: 700; font-size: 15px; letter-spacing: .08em; }
+footer .school-unused { margin-top: 12px; font-family: var(--font-display); font-weight: 700; font-size: 15px; letter-spacing: .08em; }
 footer { margin-top: 40px; text-align: center; font-size: 14px; color: var(--muted); line-height: 1.8; }
 @media (min-width: 560px) { h1 { font-size: 36px; } }
 @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
@@ -218,6 +238,13 @@ footer { margin-top: 40px; text-align: center; font-size: 14px; color: var(--mut
 
 </head>
 <body>
+<header class="brand" aria-label="学習空間 稲里教室">
+  <div class="logo-sign">
+    <span class="logo-tiles" aria-hidden="true"><span class="t1">学</span><span class="t2">習</span><span class="t3">空</span><span class="t4">間</span></span>
+    <span class="logo-name" aria-hidden="true">稲里教室</span>
+  </div>
+</header>
+
 <nav class="nav" aria-label="ページ内の移動">
   <div class="wrap">
     <a href="#a" data-open="a">A 作成</a>
@@ -429,7 +456,6 @@ footer { margin-top: 40px; text-align: center; font-size: 14px; color: var(--mut
 
   <footer>
     <p>画面の表示は、機種やアプリのバージョンによって少し違うことがあります。<br>わからないところは、教室にお声がけください。</p>
-    <p class="school">学習空間稲里教室</p>
   </footer>
 </main>
 
