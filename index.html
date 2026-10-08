@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>口コミ投稿のお願いと方法</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700&display=swap">
+<style>
+/* Layout: 1-column phone-first guide. Privacy button first, then two big A/B choice buttons, privacy summary, numbered step cards with a "done" tick each. Calm dusty-pink palette with a sage accent for "not needed". */
+:root {
+  --bg: #FBF3F4;
+  --surface: #FFFFFF;
+  --ink: #3A2A2F;
+  --muted: #7A5F67;
+  --line: #EBD7DB;
+  --accent: #A94A62;
+  --accent-ink: #FFFFFF;
+  --soft: #F6E1E6;
+  --mark: #F6D3DB;
+  --chip: #F7E6E9;
+  --sage: #3F6B55;
+  --sage-bg: #E2EFE7;
+  --font-display: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", "Yu Gothic", sans-serif;
+  --font-body: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #231A1D; --surface: #2E2226; --ink: #F6E8EB; --muted: #C6AEB4;
+    --line: #4A383D; --accent: #E58CA5; --accent-ink: #2A1119; --soft: #3E2831; --mark: #6B3445; --chip: #3A2A2F;
+    --sage: #9AD0AF; --sage-bg: #22352A;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #231A1D; --surface: #2E2226; --ink: #F6E8EB; --muted: #C6AEB4;
+  --line: #4A383D; --accent: #E58CA5; --accent-ink: #2A1119; --soft: #3E2831; --mark: #6B3445; --chip: #3A2A2F;
+  --sage: #9AD0AF; --sage-bg: #22352A;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--font-body); font-size: 17px; line-height: 1.8;
+  padding-inline: 16px; padding-block: 0 48px;
+  -webkit-text-size-adjust: 100%;
+}
+.wrap { max-width: 640px; margin-inline: auto; }
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; line-height: 1.4; margin: 0; }
+p { margin: 0; }
+a { color: var(--accent); }
+
+/* nav */
+.nav {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
+  background: var(--bg); border-bottom: 1px solid var(--line);
+  margin-inline: -16px; padding: 8px 16px;
+}
+.nav .wrap { display: flex; gap: 6px; }
+.nav a {
+  flex: 1; text-align: center; text-decoration: none; color: var(--ink);
+  background: var(--chip); border-radius: 999px; padding: 8px 2px;
+  font-family: var(--font-display); font-weight: 700; font-size: 13.5px; line-height: 1.4;
+}
+.nav a:focus-visible, .go:focus-visible, .choice button:focus-visible, .privbtn:focus-visible, .closebtn:focus-visible, summary:focus-visible, .done input:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+/* head */
+.head { padding-block: 28px 8px; display: grid; gap: 10px; }
+.kicker { font-size: 14px; color: var(--muted); font-weight: 500; letter-spacing: .06em; }
+h1 { font-size: 30px; font-weight: 900; }
+.lead { color: var(--muted); font-size: 16px; }
+.ask { margin-top: 12px; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 16px; display: grid; gap: 8px; font-size: 16px; line-height: 1.85; }
+.ask b { font-family: var(--font-display); color: var(--accent); font-size: 15px; letter-spacing: .04em; }
+
+/* privacy button */
+.privbtn {
+  display: grid; gap: 4px; margin-top: 20px; text-decoration: none; color: var(--ink);
+  background: var(--soft); border: 2px solid var(--accent); border-radius: 14px; padding: 16px;
+  width: 100%; font: inherit; text-align: left; cursor: pointer;
+}
+.panel { margin-top: 14px; border: 2px solid var(--line); border-radius: 14px; padding: 8px 16px 18px; scroll-margin-top: 64px; }
+.panel .part-title { padding-top: 12px; }
+.phone { background: var(--soft); border: 2px solid var(--accent); border-radius: 14px; padding: 14px 16px; display: grid; gap: 8px; margin-bottom: 4px; }
+.phone h3 { font-size: 18px; font-weight: 700; }
+.phone p, .phone li { font-size: 16px; line-height: 1.8; }
+.phone ul { margin: 0; padding-left: 1.2em; display: grid; gap: 4px; }
+.ptitle { font-size: 19px; font-weight: 900; padding-top: 10px; }
+.mini { list-style: none; margin: 12px 0; padding: 0; display: grid; gap: 10px; }
+.mini li { display: flex; gap: 10px; align-items: flex-start; font-size: 15.5px; line-height: 1.7; }
+.mini .pill { min-width: 5.4em; text-align: center; flex-shrink: 0; margin-top: 2px; }
+.mini li > span:last-child { min-width: 0; }
+.mini b { font-family: var(--font-display); font-size: 16.5px; margin-right: 6px; }
+.part.sub { margin-top: 14px; }
+.morebtn {
+  display: grid; gap: 2px; width: 100%; margin-top: 14px; font: inherit; text-align: left; cursor: pointer;
+  background: var(--surface); color: var(--ink); border: 2px solid var(--line); border-radius: 14px; padding: 14px 16px;
+}
+.morebtn[aria-expanded="true"] { border-color: var(--accent); }
+.morebtn strong { font-family: var(--font-display); font-size: 17px; }
+.morebtn span { font-size: 14.5px; color: var(--muted); }
+.morebtn:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.closebtn {
+  display: block; width: 100%; margin-top: 16px; font: inherit; font-family: var(--font-display); font-weight: 700; font-size: 16px;
+  background: var(--surface); color: var(--accent); border: 2px solid var(--accent); border-radius: 12px; padding: 12px 16px; cursor: pointer;
+}
+.closebtn:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.privbtn strong { font-family: var(--font-display); font-size: 18px; line-height: 1.5; }
+.privbtn span { font-size: 15px; color: var(--muted); line-height: 1.6; }
+.privbtn em { font-style: normal; font-weight: 700; color: var(--accent); font-size: 15px; }
+
+/* chooser */
+.choose-label { margin-top: 28px; font-family: var(--font-display); font-weight: 700; font-size: 17px; }
+.choice { display: grid; gap: 12px; margin-top: 10px; }
+.choice button {
+  display: grid; grid-template-columns: 48px minmax(0, 1fr) 14px; gap: 14px; align-items: center;
+  text-decoration: none; border-radius: 16px; padding: 18px 16px; border: 3px solid var(--accent);
+  width: 100%; font: inherit; text-align: left; cursor: pointer;
+}
+.choice button[aria-pressed="true"] { background: var(--soft); }
+.choice button[aria-pressed="true"] .arrow { transform: rotate(90deg); }
+.choice .letter {
+  width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center;
+  font-family: var(--font-display); font-weight: 900; font-size: 26px;
+}
+.choice strong { display: block; font-family: var(--font-display); font-size: 20px; line-height: 1.45; }
+.choice small { display: block; font-size: 14.5px; line-height: 1.6; margin-top: 2px; }
+.choice .arrow { font-size: 22px; font-weight: 700; }
+.choice .ca { background: var(--surface); color: var(--ink); }
+.choice .ca .letter { background: var(--accent); color: var(--accent-ink); }
+.choice .ca small { color: var(--muted); }
+.choice .ca .arrow { color: var(--accent); }
+.choice .cb { background: var(--surface); color: var(--ink); }
+.choice .cb .letter { background: var(--accent); color: var(--accent-ink); }
+.choice .cb small { color: var(--muted); }
+.choice .cb .arrow { color: var(--accent); }
+.check {
+  margin-top: 16px; background: var(--chip); border-radius: 12px; padding: 14px 16px; font-size: 15px; line-height: 1.7;
+}
+
+/* parts */
+.part { margin-top: 44px; scroll-margin-top: 64px; }
+.part-title { display: grid; gap: 4px; margin-bottom: 18px; }
+.part-title .tag { font-size: 14px; font-weight: 700; color: var(--accent); letter-spacing: .06em; }
+.part-title h2 { font-size: 24px; font-weight: 900; }
+.part-title p { color: var(--muted); font-size: 15px; line-height: 1.7; }
+
+/* privacy summary */
+.group { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 4px 16px 6px; margin-top: 14px; }
+.group-head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding-block: 12px 4px; }
+.group-head h3 { font-size: 18px; font-weight: 700; }
+.row { display: grid; gap: 4px; padding-block: 12px; border-top: 1px solid var(--line); }
+.row-top { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; }
+.row-name { font-family: var(--font-display); font-weight: 700; font-size: 17px; margin-right: auto; }
+.pill { font-size: 13px; font-weight: 700; padding: 1px 10px; border-radius: 999px; line-height: 1.7; white-space: nowrap; }
+.pill.need { background: var(--accent); color: var(--accent-ink); }
+.pill.maybe { background: var(--mark); color: var(--ink); }
+.pill.no { background: var(--sage-bg); color: var(--sage); }
+.pill.show { border: 1px solid var(--accent); color: var(--accent); }
+.pill.hide { border: 1px solid var(--sage); color: var(--sage); }
+.ast { font-size: 15px; line-height: 1.75; color: var(--ink); }
+.ast::before { content: "※"; color: var(--accent); font-weight: 700; margin-right: 2px; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; font-size: 14px; color: var(--muted); margin-top: 12px; }
+
+ol.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.step {
+  display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 12px;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 16px 16px 12px;
+}
+.num {
+  width: 40px; height: 40px; border-radius: 50%; background: var(--accent); color: var(--accent-ink);
+  display: grid; place-items: center; font-family: var(--font-display); font-weight: 900; font-size: 20px;
+}
+.step h3 { font-size: 19px; font-weight: 700; }
+.body { display: grid; gap: 8px; min-width: 0; }
+.body p { font-size: 16px; line-height: 1.8; }
+.body ul { margin: 0; padding-left: 1.2em; display: grid; gap: 4px; font-size: 16px; }
+.btn {
+  display: inline-block; background: var(--mark); color: var(--ink); font-weight: 700;
+  border-radius: 8px; padding: 0 8px; line-height: 1.6; white-space: nowrap;
+}
+.note { font-size: 14.5px; color: var(--muted); line-height: 1.7; border-left: 3px solid var(--line); padding-left: 10px; }
+.body p.ast { background: var(--soft); border-radius: 10px; padding: 8px 12px; font-size: 15px; line-height: 1.75; color: var(--ink); }
+.go {
+  display: block; text-align: center; text-decoration: none; background: var(--accent); color: var(--accent-ink);
+  font-family: var(--font-display); font-weight: 700; font-size: 17px; border-radius: 12px; padding: 14px 16px; margin-top: 4px;
+}
+.done { display: flex; align-items: center; gap: 8px; font-size: 15px; color: var(--muted); margin-top: 4px; cursor: pointer; width: fit-content; }
+.done input { width: 22px; height: 22px; accent-color: var(--accent); margin: 0; }
+.step.is-done { opacity: .6; }
+.step.is-done h3 { text-decoration: line-through; text-decoration-thickness: 1px; }
+
+.goal {
+  margin-top: 14px; background: var(--accent); color: var(--accent-ink); border-radius: 14px; padding: 16px;
+  font-family: var(--font-display); font-weight: 700; font-size: 17px; line-height: 1.7;
+}
+.goal small { display: block; font-family: var(--font-body); font-weight: 400; font-size: 14.5px; opacity: .95; margin-top: 2px; }
+
+/* tips */
+.tips { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.tips li { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; font-size: 16px; line-height: 1.7; }
+.tips b { font-family: var(--font-display); display: block; font-size: 15px; color: var(--accent); }
+
+/* faq */
+.faq { display: grid; gap: 8px; }
+details { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 0 14px; }
+summary { cursor: pointer; padding: 14px 0; font-family: var(--font-display); font-weight: 700; font-size: 16.5px; line-height: 1.5; }
+details p { padding-bottom: 14px; font-size: 16px; line-height: 1.8; color: var(--muted); }
+
+footer { margin-top: 40px; text-align: center; font-size: 14px; color: var(--muted); line-height: 1.8; }
+@media (min-width: 560px) { h1 { font-size: 36px; } }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+</style>
+
+</head>
+<body>
+<nav class="nav" aria-label="ページ内の移動">
+  <div class="wrap">
+    <a href="#a" data-open="a">A 作成</a>
+    <a href="#b" data-open="b">B 投稿</a>
+    <a href="#tips" data-open="tips">ヒント</a>
+    <a href="#faq" data-open="faq">質問</a>
+  </div>
+</nav>
+
+<main class="wrap">
+  <header class="head">
+    <p class="kicker">学習空間稲里教室</p>
+    <h1>Google口コミ<br>投稿のお願いと方法</h1>
+    <p class="lead">スマホだけで、口コミの投稿まで進めます。画面の指示どおりに、上から順番にお進みください。</p>
+    <div class="ask">
+      <b>口コミ投稿のおねがい</b>
+      <p>いつもありがとうございます。口コミはとてもはげみになります！</p>
+      <p>通ってみて、気に入っていただいた点がありましたら、ご記入いただければさいわいです。今後の励みと参考にさせていただきます。</p>
+      <p>お時間のある時にご無理のない範囲でよろしくお願い申し上げます。</p>
+    </div>
+  </header>
+
+  <button type="button" class="privbtn" id="privbtn" aria-expanded="false" aria-controls="privacy">
+    <em>最初にお読みください</em>
+    <strong>Googleアカウントの個人情報が気になるみなさま</strong>
+    <span id="privstate">こちらを押してください</span>
+  </button>
+
+  <!-- Privacy -->
+  <section class="panel" id="privacy" hidden>
+    <h2 class="ptitle">登録に必要な情報・不要な情報</h2>
+    <ul class="mini">
+      <li><span class="pill need">必要</span><span><b>名前</b><span class="ast">ニックネームで大丈夫。口コミに表示されます。</span></span></li>
+      <li><span class="pill need">必要</span><span><b>生年月日</b><span class="ast">他の人には見えません。</span></span></li>
+      <li><span class="pill need">必要</span><span><b>性別</b><span class="ast">「回答しない」を選べます。</span></span></li>
+      <li><span class="pill need">必要</span><span><b>Gmailアドレス</b><span class="ast">新しく作ればOK。他の人には見えません。</span></span></li>
+      <li><span class="pill need">必要</span><span><b>パスワード</b><span class="ast">ご自身だけがわかればOK。</span></span></li>
+      <li><span class="pill maybe">出たとき</span><span><b>電話番号</b><span class="ast">登録時の本人確認でのみ使用します。教室や口コミを読む人には伝わりません。</span></span></li>
+      <li><span class="pill no">不要</span><span>住所／支払い情報（カード等）／身分証・マイナンバー／プロフィール写真／再設定用メール</span></li>
+    </ul>
+    <p class="ast">口コミを読む人に見えるのは、名前と口コミの内容だけです。お子さまのフルネームや学校名は書かなくて大丈夫です。</p>
+    <button type="button" class="closebtn" id="privclose">とじる</button>
+  </section>
+
+
+  <p class="choose-label">あてはまる方を押してください</p>
+  <nav class="choice" aria-label="あてはまる方を選ぶ">
+    <button type="button" class="ca" id="chooseA" aria-pressed="false" aria-controls="a">
+      <span class="letter">A</span>
+      <span>
+        <strong>Googleアカウントを<br>持っていない・わからない</strong>
+        <small>アカウントを作ってから、口コミを書きます</small>
+      </span>
+      <span class="arrow" aria-hidden="true">›</span>
+    </button>
+    <button type="button" class="cb" id="chooseB" aria-pressed="false" aria-controls="b">
+      <span class="letter">B</span>
+      <span>
+        <strong>Googleアカウントを<br>持っている</strong>
+        <small>そのまま口コミを書きます</small>
+      </span>
+      <span class="arrow" aria-hidden="true">›</span>
+    </button>
+  </nav>
+
+  <p class="check"><b>持っているか見分ける方法：</b>Googleマップのアプリを開いて、右上の丸いアイコンに写真や頭文字が出ていれば、すでにアカウントがあります。人の形のマークだけの場合は A から始めてください。</p>
+
+  <!-- Part A -->
+  <section class="part" id="a" hidden>
+    <div class="part-title">
+      <span class="tag">パート A</span>
+      <h2>Googleアカウントを作る</h2>
+      <p>すでにお持ちの方は、このパートは飛ばして B へ進んでください。</p>
+    </div>
+    <ol class="steps">
+      <li class="step" id="a1">
+        <div class="num">1</div>
+        <div class="body">
+          <h3>作成ページを開く</h3>
+          <p>下のボタンを押すと、アカウント作成の画面が開きます。</p>
+          <a class="go" href="https://accounts.google.com/signup" target="_blank" rel="noopener">アカウント作成ページを開く</a>
+          <p class="note">開かないときは、SafariまたはChromeで「Google アカウント 作成」と検索してください。</p>
+          <label class="done" for="d-a1"><input type="checkbox" id="d-a1" data-step="a1"> できた</label>
+        </div>
+      </li>
+      <li class="step" id="a2">
+        <div class="num">2</div>
+        <div class="body">
+          <h3>名前を入力する</h3>
+          <p>姓と名を入れて、<span class="btn">次へ</span> を押します。</p>
+          <p class="ast">ニックネームで作れます。本名にする必要はありません。この名前は、口コミを読む人に見えます。</p>
+          <label class="done" for="d-a2"><input type="checkbox" id="d-a2" data-step="a2"> できた</label>
+        </div>
+      </li>
+      <li class="step" id="a3">
+        <div class="num">3</div>
+        <div class="body">
+          <h3>生年月日と性別を入力する</h3>
+          <p>生年月日と性別を選んで、<span class="btn">次へ</span> を押します。</p>
+          <p class="ast">生年月日と性別は、他の人には表示されません。性別は「回答しない」を選べます。</p>
+          <p class="note">お子さまは、保護者の方のアカウントでの投稿をお願いします。</p>
+          <label class="done" for="d-a3"><input type="checkbox" id="d-a3" data-step="a3"> できた</label>
+        </div>
+      </li>
+      <li class="step" id="a4">
+        <div class="num">4</div>
+        <div class="body">
+          <h3>メールアドレス（Gmail）を決める</h3>
+          <p>おすすめの候補が出たら、好きなものを選んで <span class="btn">次へ</span> を押します。</p>
+          <ul>
+            <li>自分で決めたいとき：<span class="btn">自分のGmailアドレスを作成</span> を選び、半角の英数字で入力します。</li>
+            <li>すでに使っているメールがあるとき：<span class="btn">代わりに現在のメールアドレスを使用</span> を選びます。</li>
+          </ul>
+          <p class="ast">名前と同じにしなくて大丈夫です。メールアドレスは、口コミを読む人には見えません。</p>
+          <label class="done" for="d-a4"><input type="checkbox" id="d-a4" data-step="a4"> できた</label>
+        </div>
+      </li>
+      <li class="step" id="a5">
+        <div class="num">5</div>
+        <div class="body">
+          <h3>パスワードを決める</h3>
+          <p>8文字以上で、英字と数字を混ぜて入力し、<span class="btn">次へ</span> を押します。</p>
+          <p class="note">メールアドレスとパスワードは、忘れないようにメモ帳アプリなどに控えておいてください。</p>
+          <label class="done" for="d-a5"><input type="checkbox" id="d-a5" data-step="a5"> できた</label>
+        </div>
+      </li>
+      <li class="step" id="a6">
+        <div class="num">6</div>
+        <div class="body">
+          <h3>電話番号の画面が出たとき</h3>
+          <p>電話番号の入力画面が出たら、スマホの番号を入れます。SMSで届く6桁の数字を入力して <span class="btn">確認</span> を押します。</p>
+          <p class="ast">電話番号は、登録時の本人確認でのみ使用します。教室や口コミを読む人には伝わりません。「ほかのサービスでも使う」という案内が出たら、<span class="btn">スキップ</span> を選びます。この画面が出なければ、入力は不要です。</p>
+          <p class="note">「再設定用のメールアドレス」の画面は、<span class="btn">スキップ</span> を押して進んで大丈夫です。</p>
+          <label class="done" for="d-a6"><input type="checkbox" id="d-a6" data-step="a6"> できた</label>
+        </div>
+      </li>
+      <li class="step" id="a7">
+        <div class="num">7</div>
+        <div class="body">
+          <h3>内容を確認して同意する</h3>
+          <p>入力した内容を確認して <span class="btn">次へ</span>。最後に、画面の下までスクロールして <span class="btn">同意する</span> を押すと完了です。</p>
+          <p class="ast">住所やクレジットカードの入力は必要ありません。</p>
+          <label class="done" for="d-a7"><input type="checkbox" id="d-a7" data-step="a7"> できた</label>
+        </div>
+      </li>
+    </ol>
+    <p class="goal">アカウントができました。<small>続けて、パート B で口コミを書きましょう。</small></p>
+  </section>
+
+  <!-- Part B -->
+  <section class="part" id="b" hidden>
+    <div class="part-title">
+      <span class="tag">パート B</span>
+      <h2>口コミを書く</h2>
+      <p>Googleマップのアプリで進めるのが一番かんたんです。アプリがなくても、ブラウザで同じように書けます。</p>
+    </div>
+    <ol class="steps">
+      <li class="step" id="b1">
+        <div class="num">1</div>
+        <div class="body">
+          <h3>Googleマップを開く</h3>
+          <p>アプリをお持ちなら、アプリを開きます。お持ちでなければ、下のボタンから教室のページを開けます。</p>
+          <a class="go" href="https://www.google.com/maps/search/?api=1&query=%E5%AD%A6%E7%BF%92%E7%A9%BA%E9%96%93%E7%A8%B2%E9%87%8C%E6%95%99%E5%AE%A4%20%E9%95%B7%E9%87%8E%E5%B8%82" target="_blank" rel="noopener">Googleマップで教室を開く</a>
+          <p class="note">このボタンから開いた場合は、手順 3 まで進んだ状態です。手順 2 でログインを確かめてください。</p>
+          <label class="done" for="d-b1"><input type="checkbox" id="d-b1" data-step="b1"> できた</label>
+        </div>
+      </li>
+      <li class="step" id="b2">
+        <div class="num">2</div>
+        <div class="body">
+          <h3>ログインしているか確かめる</h3>
+          <p>画面の右上にある丸いアイコンを見ます。写真や頭文字が出ていればログイン済みです。</p>
+          <p>人の形のマークだけのときは、アイコンを押して、作ったアカウントでログインします。</p>
+          <label class="done" for="d-b2"><input type="checkbox" id="d-b2" data-step="b2"> できた</label>
+        </div>
+      </li>
+      <li class="step" id="b3">
+        <div class="num">3</div>
+        <div class="body">
+          <h3>教室を探す</h3>
+          <p>画面上の検索窓に <span class="btn">学習空間稲里教室</span> と入力し、出てきた候補を押します。</p>
+          <p class="note">似た名前が出たら、所在地が長野市のものを選んでください。</p>
+          <label class="done" for="d-b3"><input type="checkbox" id="d-b3" data-step="b3"> できた</label>
+        </div>
+      </li>
+      <li class="step" id="b4">
+        <div class="num">4</div>
+        <div class="body">
+          <h3>「口コミ」から書き始める</h3>
+          <p>画面を少し下へスクロールして、<span class="btn">口コミ</span> のタブを押します。そこにある <span class="btn">口コミを書く</span> を押してください。</p>
+          <p class="note">「口コミを書く」が見当たらないときは、星のマーク（★★★★★）を直接押しても書き始められます。</p>
+          <label class="done" for="d-b4"><input type="checkbox" id="d-b4" data-step="b4"> できた</label>
+        </div>
+      </li>
+      <li class="step" id="b5">
+        <div class="num">5</div>
+        <div class="body">
+          <h3>星の数を選ぶ</h3>
+          <p>満足度に合わせて、★の1〜5のどこかを押します。星が多いほど高い評価です。</p>
+          <label class="done" for="d-b5"><input type="checkbox" id="d-b5" data-step="b5"> できた</label>
+        </div>
+      </li>
+      <li class="step" id="b6">
+        <div class="num">6</div>
+        <div class="body">
+          <h3>感想を入力する</h3>
+          <p>「感想を共有してください」と書かれた枠に、ご自分の言葉で書きます。短くても大丈夫です。書き方のヒントは、下の「書き方のヒント」ボタンで見られます。</p>
+          <p class="ast">口コミは誰でも読めます。お子さまのフルネームや学校名など、個人が特定される内容は書かなくて大丈夫です。</p>
+          <label class="done" for="d-b6"><input type="checkbox" id="d-b6" data-step="b6"> できた</label>
+        </div>
+      </li>
+      <li class="step" id="b7">
+        <div class="num">7</div>
+        <div class="body">
+          <h3>投稿する</h3>
+          <p>右上（または画面の下）にある <span class="btn">投稿</span> を押します。</p>
+          <p class="note">写真は付けなくて構いません。画面に表示が出るまで、数分かかることがあります。</p>
+          <label class="done" for="d-b7"><input type="checkbox" id="d-b7" data-step="b7"> できた</label>
+        </div>
+      </li>
+    </ol>
+    <p class="goal">投稿は以上です。ありがとうございました。<small>反映には数分から数日かかる場合があります。</small></p>
+  </section>
+
+  <!-- Tips -->
+  <button type="button" class="morebtn" id="tipsbtn" aria-expanded="false" aria-controls="tips">
+    <strong>書き方のヒント</strong>
+    <span>何を書けばいいか迷ったときは、こちらを押してください</span>
+  </button>
+  <section class="part sub" id="tips" hidden>
+    <p class="lead" style="margin-bottom:12px">次の中から、思いついたものを1つ2つ書くだけで十分です。ありのままの感想をお願いします。</p>
+    <ul class="tips">
+      <li><b>通い始めたきっかけ</b>どんなことで困っていて、この教室を選んだか。</li>
+      <li><b>教室の雰囲気や先生</b>教え方、声かけ、通いやすさなどで感じたこと。</li>
+      <li><b>お子さま・ご自身の変化</b>勉強への向き合い方、成績、学校での様子など。</li>
+      <li><b>こんな方に向いていると思う点</b>同じ悩みをもつ方が知りたいこと。</li>
+    </ul>
+  </section>
+
+  <!-- FAQ -->
+  <button type="button" class="morebtn" id="faqbtn" aria-expanded="false" aria-controls="faq">
+    <strong>困ったとき</strong>
+    <span>よくある質問は、こちらを押してください</span>
+  </button>
+  <section class="part sub" id="faq" hidden>
+    <div class="faq">
+      <details>
+        <summary>「口コミを書く」が出てきません</summary>
+        <p>右上のアイコンで、ログインできているか確かめてください。それでも出ないときは、Googleマップのアプリを最新にするか、いったん閉じて開き直してみてください。</p>
+      </details>
+      <details>
+        <summary>パスワードを忘れてしまいました</summary>
+        <p>ログイン画面で <b>パスワードをお忘れの場合</b> を押すと、画面の案内に沿って新しいパスワードを決められます。</p>
+      </details>
+      <details>
+        <summary>投稿したのに、口コミが表示されません</summary>
+        <p>表示されるまでに時間がかかることがあります。数時間から1日ほど待ってから、もう一度教室のページを見てください。</p>
+      </details>
+      <details>
+        <summary>書いた口コミを直したり、消したりできますか</summary>
+        <p>できます。Googleマップの右上のアイコンから、ご自身のプロフィールにある「口コミ」を開くと、投稿した口コミの編集や削除ができます。</p>
+      </details>
+      <details>
+        <summary>名前が表示されるのが心配です</summary>
+        <p>口コミには、アカウントの名前が表示されます。ニックネームで作成すれば、本名は出ません。作ったあとでも、Googleアカウントの設定から表示名を変えられます。</p>
+      </details>
+    </div>
+  </section>
+
+  <footer>
+    <p>画面の表示は、機種やアプリのバージョンによって少し違うことがあります。<br>わからないところは、教室にお声がけください。</p>
+  </footer>
+</main>
+
+<script>
+(function () {
+  var secs = { a: document.getElementById('a'), b: document.getElementById('b'), tips: document.getElementById('tips'), faq: document.getElementById('faq') };
+  var btnA = document.getElementById('chooseA'), btnB = document.getElementById('chooseB');
+  var tipsBtn = document.getElementById('tipsbtn'), faqBtn = document.getElementById('faqbtn');
+  function pick(which, force) {
+    var cur = btnA.getAttribute('aria-pressed') === 'true' ? 'a' : (btnB.getAttribute('aria-pressed') === 'true' ? 'b' : null);
+    var next = (!force && cur === which) ? null : which;
+    secs.a.hidden = next !== 'a';
+    secs.b.hidden = !next;
+    btnA.setAttribute('aria-pressed', next === 'a' ? 'true' : 'false');
+    btnB.setAttribute('aria-pressed', next === 'b' ? 'true' : 'false');
+    if (next) { secs[next].scrollIntoView({ block: 'start' }); }
+  }
+  function toggle(btn, sec, force) {
+    var open = force ? true : sec.hidden;
+    sec.hidden = !open;
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if (open) { sec.scrollIntoView({ block: 'start' }); }
+  }
+  btnA.addEventListener('click', function () { pick('a', false); });
+  btnB.addEventListener('click', function () { pick('b', false); });
+  tipsBtn.addEventListener('click', function () { toggle(tipsBtn, secs.tips, false); });
+  faqBtn.addEventListener('click', function () { toggle(faqBtn, secs.faq, false); });
+  document.querySelectorAll('a[data-open]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      var k = link.getAttribute('data-open');
+      if (k === 'a' || k === 'b') { pick(k, true); }
+      else if (k === 'tips') { toggle(tipsBtn, secs.tips, true); }
+      else { toggle(faqBtn, secs.faq, true); }
+    });
+  });
+})();
+(function () {
+  var pb = document.getElementById('privbtn'), pp = document.getElementById('privacy');
+  var ps = document.getElementById('privstate'), pc = document.getElementById('privclose');
+  function setPanel(open) {
+    pp.hidden = !open;
+    pb.setAttribute('aria-expanded', open ? 'true' : 'false');
+    ps.textContent = open ? 'とじるには、もう一度押してください' : 'こちらを押してください';
+    if (open) { pp.scrollIntoView({ block: 'start' }); } else { pb.scrollIntoView({ block: 'center' }); }
+  }
+  pb.addEventListener('click', function () { setPanel(pp.hidden); });
+  pc.addEventListener('click', function () { setPanel(false); });
+})();
+(function () {
+  var KEY = 'kuchikomi-guide-done';
+  var done = {};
+  try { done = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) { done = {}; }
+  var boxes = document.querySelectorAll('input[data-step]');
+  boxes.forEach(function (box) {
+    var id = box.getAttribute('data-step');
+    var card = document.getElementById(id);
+    if (done[id]) { box.checked = true; card.classList.add('is-done'); }
+    box.addEventListener('change', function () {
+      card.classList.toggle('is-done', box.checked);
+      done[id] = box.checked;
+      try { localStorage.setItem(KEY, JSON.stringify(done)); } catch (e) {}
+    });
+  });
+})();
+</script>
+</body>
+</html>
