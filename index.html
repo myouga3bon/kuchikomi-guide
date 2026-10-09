@@ -23,8 +23,8 @@
   --chip: #F7E6E9;
   --sage: #3F6B55;
   --sage-bg: #E2EFE7;
-  --red: #C2272D;
-  --red-bg: #FDECEC;
+  --sky: #0B7FA6;
+  --sky-bg: #E3F4FA;
   --font-display: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", "Yu Gothic", sans-serif;
   --font-body: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", sans-serif;
 }
@@ -32,14 +32,14 @@
   :root:not([data-theme="light"]) {
     --bg: #231A1D; --surface: #2E2226; --ink: #F6E8EB; --muted: #C6AEB4;
     --line: #4A383D; --accent: #E58CA5; --accent-ink: #2A1119; --soft: #3E2831; --mark: #6B3445; --chip: #3A2A2F;
-    --sage: #9AD0AF; --sage-bg: #22352A; --red: #FF9C9C; --red-bg: #43232A;
+    --sage: #9AD0AF; --sage-bg: #22352A; --sky: #86D6F2; --sky-bg: #1B3641;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --bg: #231A1D; --surface: #2E2226; --ink: #F6E8EB; --muted: #C6AEB4;
   --line: #4A383D; --accent: #E58CA5; --accent-ink: #2A1119; --soft: #3E2831; --mark: #6B3445; --chip: #3A2A2F;
-  --sage: #9AD0AF; --sage-bg: #22352A; --red: #FF9C9C; --red-bg: #43232A;
+  --sage: #9AD0AF; --sage-bg: #22352A; --sky: #86D6F2; --sky-bg: #1B3641;
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
@@ -108,8 +108,8 @@ h1 { font-size: 30px; font-weight: 900; }
 .phone h3 { font-size: 18px; font-weight: 700; }
 .phone p, .phone li { font-size: 16px; line-height: 1.8; }
 .phone ul { margin: 0; padding-left: 1.2em; display: grid; gap: 4px; }
-.red { color: var(--red); font-weight: 700; }
-.safe { background: var(--red-bg); border: 2px solid var(--red); border-radius: 12px; padding: 12px 14px; color: var(--red); font-weight: 700; font-size: 16px; line-height: 1.75; }
+.sky { color: var(--sky); font-weight: 700; }
+.safe { background: var(--sky-bg); border: 2px solid var(--sky); border-radius: 12px; padding: 12px 14px; color: var(--sky); font-weight: 700; font-size: 16px; line-height: 1.75; }
 .mini .safe { display: block; margin-block: 4px; }
 .safe .lab { display: block; font-family: var(--font-display); font-size: 15px; margin-bottom: 2px; }
 .ptitle { font-size: 19px; font-weight: 900; padding-top: 10px; }
@@ -257,10 +257,9 @@ footer { margin-top: 40px; text-align: center; font-size: 14px; color: var(--mut
 <main class="wrap">
   <header class="head">
     <h1>Google口コミ<br>投稿のお願いと方法</h1>
-    <p class="lead">スマホだけで、口コミの投稿まで進めます。画面の指示どおりに、上から順番にお進みください。</p>
     <div class="ask">
-      <b>口コミ投稿のおねがい</b>
-      <p>稲里教室に通ってみて、気に入っていただいた点がありましたら、ご記入いただければさいわいです。今後の励みと参考にさせていただきます。</p>
+      <b>★ 口コミ投稿のおねがい ★</b>
+      <p>今後のはげみと参考にさせていただきます！</p>
       <p>お時間のある時にご無理のない範囲でよろしくお願い申し上げます。</p>
     </div>
   </header>
@@ -275,10 +274,10 @@ footer { margin-top: 40px; text-align: center; font-size: 14px; color: var(--mut
   <section class="panel" id="privacy" hidden>
     <h2 class="ptitle">登録に必要な情報・不要な情報</h2>
     <ul class="mini">
-      <li><span class="pill need">必要</span><span><b>名前</b><span class="ast"><span class="red">ニックネームでだいじょうぶ</span>。口コミに表示されます。</span></span></li>
+      <li><span class="pill need">必要</span><span><b>名前</b><span class="ast"><span class="sky">ニックネームでだいじょうぶです</span>。口コミに表示されます。</span></span></li>
       <li><span class="pill need">必要</span><span><b>生年月日</b><span class="ast">他の人には見えません。</span></span></li>
       <li><span class="pill need">必要</span><span><b>性別</b><span class="ast">「回答しない」を選べます。</span></span></li>
-      <li><span class="pill need">必要</span><span><b>Gmailアドレス</b><span class="ast"><span class="red">新しく作ればだいじょうぶ</span>。他の人には見えません。</span></span></li>
+      <li><span class="pill need">必要</span><span><b>Gmailアドレス</b><span class="ast"><span class="sky">新しく作ればだいじょうぶです</span>。他の人には見えません。</span></span></li>
       <li><span class="pill need">必要</span><span><b>パスワード</b><span class="ast">ご自身だけがわかればOK。</span></span></li>
       <li><span class="pill maybe">出たとき</span><span><b>電話番号</b><span class="safe"><span class="lab">電話番号について</span>登録時の本人確認のみで使用します。AIなどによるウソの書き込みではないことの証明のためです。</span><span class="ast">教室や口コミを読む人には伝わりません。</span></span></li>
       <li><span class="pill no">不要</span><span>住所／支払い情報（カード等）／身分証・マイナンバー／プロフィール写真／再設定用メール</span></li>
@@ -332,7 +331,7 @@ footer { margin-top: 40px; text-align: center; font-size: 14px; color: var(--mut
         <div class="body">
           <h3>名前・生年月日・性別を入力する</h3>
           <p>姓と名を入れ、生年月日と性別を選んで、<span class="btn">次へ</span> を押します。</p>
-          <p class="ast"><span class="red">ニックネームでだいじょうぶ</span>です。本名にする必要はありません。この名前は、口コミを読む人に見えます。</p>
+          <p class="ast"><span class="sky">ニックネームでだいじょうぶです</span>。本名にする必要はありません。この名前は、口コミを読む人に見えます。</p>
           <p class="ast">生年月日と性別は、他の人には表示されません。性別は「回答しない」を選べます。</p>
           <p class="note">お子さまは、保護者の方のアカウントでの投稿をお願いします。</p>
         </div>
@@ -346,7 +345,7 @@ footer { margin-top: 40px; text-align: center; font-size: 14px; color: var(--mut
             <li>自分で決めたいとき：<span class="btn">自分のGmailアドレスを作成</span> を選び、半角の英数字で入力します。</li>
             <li>すでに使っているメールがあるとき：<span class="btn">代わりに現在のメールアドレスを使用</span> を選びます。</li>
           </ul>
-          <p class="ast"><span class="red">新しく作ればだいじょうぶ</span>です。名前と同じにしなくて構いません。メールアドレスは、口コミを読む人には見えません。</p>
+          <p class="ast"><span class="sky">新しく作ればだいじょうぶです</span>。名前と同じにしなくて構いません。メールアドレスは、口コミを読む人には見えません。</p>
         </div>
       </li>
       <li class="step" id="a4">
@@ -401,7 +400,7 @@ footer { margin-top: 40px; text-align: center; font-size: 14px; color: var(--mut
         <div class="body">
           <h3>口コミを書いて投稿する</h3>
           <p>画面を少し下へスクロールして、<span class="btn">口コミ</span> のタブ、<span class="btn">口コミを書く</span> の順に押します。星を選び、感想を書いたら、<span class="btn">投稿</span> を押して完了です。</p>
-          <p class="note">ログインを求められたら、作ったアカウントでログインしてください。「口コミを書く」が見当たらないときは、星のマーク（★★★★★）を直接押しても書き始められます。書き方のヒントは、下の「書き方のヒント」ボタンで見られます。</p>
+          <p class="note">ログインを求められたら、作ったアカウントでログインしてください。「口コミを書く」が見当たらないときは、星のマーク（★）を直接押しても書き始められます。書き方のヒントは、下の「書き方のヒント」ボタンで見られます。</p>
           <p class="ast">口コミは誰でも読めます。お子さまのフルネームや学校名など、個人が特定される内容は書かなくて大丈夫です。</p>
         </div>
       </li>
